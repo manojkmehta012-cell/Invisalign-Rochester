@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Play } from "lucide-react";
 import { Reveal, Eyebrow } from "./Reveal";
 
-function VideoCard({ src, poster, quote, name, context, testid }) {
+function VideoCard({ src, poster, quote, context, testid }) {
   const videoRef = useRef(null);
   const [playing, setPlaying] = useState(false);
 
@@ -40,7 +40,7 @@ function VideoCard({ src, poster, quote, name, context, testid }) {
         )}
       </div>
       <p className="mt-5 font-display italic text-lg text-ink-900 leading-relaxed">“{quote}”</p>
-      <p className="mt-3 text-xs tracking-[0.18em] uppercase text-gold-hover">{name} · {context}</p>
+      <p className="mt-3 text-xs tracking-[0.18em] uppercase text-gold-hover">{context}</p>
     </div>
   );
 }
@@ -62,7 +62,6 @@ export default function Testimonials() {
               src="/media/testimonial-elizabeth.mp4"
               poster="/media/testimonial-elizabeth.jpg"
               quote="I feel that I can smile more."
-              name="Elizabeth"
               context="Smile makeover & Invisalign patient"
               testid="testimonial-video-elizabeth"
             />
@@ -72,7 +71,6 @@ export default function Testimonials() {
               src="/media/testimonial-ella.mp4"
               poster="/media/testimonial-ella.jpg"
               quote="So easy to work with, and communication is very good."
-              name="Ella"
               context="Invisalign patient"
               testid="testimonial-video-ella"
             />
