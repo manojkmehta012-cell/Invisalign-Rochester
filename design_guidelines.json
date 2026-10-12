@@ -1,0 +1,137 @@
+{
+  "brand_identity": {
+    "clinic_name": "GM Dental & Implant Centre",
+    "location": "Rochester, Kent, UK",
+    "positioning": "Boutique Luxury Private Dental & Cosmetic Centre",
+    "emotional_archetype": "Luxury & Organic Elegance (Archetype 5 + Archetype 1 Fusion)",
+    "target_audience": "Discerning patients seeking premium cosmetic transformations & Invisalign aligners in Rochester and surrounding Kent area",
+    "tone_of_voice": "Warm, reassuring, medically authoritative, transparent, non-pressured luxury"
+  },
+  "color_palette": {
+    "primary_gold": "#D19A15",
+    "gold_hover": "#B88610",
+    "gold_light_accent": "rgba(209, 154, 21, 0.12)",
+    "dark_grey_text": "#4C4C4C",
+    "charcoal_heading": "#1A1A1A",
+    "pure_white": "#FFFFFF",
+    "warm_cream_bg": "#FA9F6",
+    "luxury_dark_section_bg": "#121212",
+    "card_border": "rgba(209, 154, 21, 0.2)",
+    "rules": "Use Gold (#D19A15) exclusively for high-value highlights, pricing badges, key CTAs, and subtle glowing accent borders. Use Dark Grey (#4C4C4C) for soft readable body text. Never use flat pure black backgrounds without gold/glass depth."
+  },
+  "typography": {
+    "heading_font_family": "Playfair Display, Cormorant Garamond, serif",
+    "body_font_family": "Plus Jakarta Sans, Outfit, sans-serif",
+    "mono_font_family": "JetBrains Mono, monospace",
+    "hierarchy": {
+      "h1_hero": "text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight leading-[1.15]",
+      "h2_section": "text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold tracking-tight leading-snug",
+      "h3_subsection": "text-xl sm:text-2xl font-serif font-medium leading-normal",
+      "h4_card": "text-lg sm:text-xl font-sans font-semibold text-[#1A1A1A]",
+      "body_text": "text-base text-[#4C4C4C] leading-relaxed",
+      "caption_eyebrow": "text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#D19A15]"
+    }
+  },
+  "layout_and_spacing": {
+    "container_padding": "px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto",
+    "section_vertical_spacing": "py-20 lg:py-32",
+    "bento_grid_mode": "Tetris Grid with Gold Micro-Borders (gap-6 lg:gap-8)",
+    "mobile_first": true,
+    "sticky_nav": "Fixed Header with Glassmorphism (backdrop-blur-xl bg-white/80 border-b border-[#D19A15]/15 z-50)",
+    "sticky_mobile_bar": "Fixed bottom bar on mobile (<768px) with 3 action buttons: Call Clinic, WhatsApp, Book Consultation (z-50)"
+  },
+  "motion_and_interactions": {
+    "smooth_scroll": "Lenis momentum scroll engine integrated at root layer",
+    "hero_animation": "Masked line-by-line staggered reveal on initial load using framer-motion",
+    "section_reveals": "Scroll-triggered opacity fade-in + 20px upward translation with viewport once: true",
+    "micro_interactions": "Hover elevation (-4px transform y), CTA subtle gold radial pulse glow, interactive before/after slider comparison tool",
+    "marquee": "Slow editorial text ribbon drifting horizontally with category tags and patient quotes using react-fast-marquee"
+  },
+  "key_components_breakdown": [
+    {
+      "name": "Navigation Header",
+      "description": "Sticky luxury nav bar with GM Dental logo mark, desktop links (Cosmetic, Invisalign, Pricing, Reviews, FAQ), click-to-call direct phone, and 'Book Free Assessment' Gold CTA button.",
+      "data_testid": "nav-header"
+    },
+    {
+      "name": "Kinetic Hero Section",
+      "description": "Eyebrow 'COSMETIC DENTISTRY AT GM DENTAL ROCHESTER', Headline 'Your Dream Smile. A Plan Made for You.', supporting clinical copy, gold call-to-action buttons, and inline instant Lead Enquiry Form.",
+      "data_testid": "hero-section"
+    },
+    {
+      "name": "Lead Enquiry Form",
+      "description": "High-converting form with Full Name, Mobile, Email, Preferred Treatment selector (Invisalign, Whitening, Bonding, Veneers, Smile Makeover), and Rochester location indicator. Submits via POST /api/enquiry with toast confirmation.",
+      "data_testid": "lead-enquiry-form"
+    },
+    {
+      "name": "Cosmetic Overview Bento Grid",
+      "description": "Interactive showcase cards for key treatments: Teeth Whitening, Composite Bonding, Porcelain Veneers, Full Smile Makeovers with before/after preview triggers.",
+      "data_testid": "cosmetic-overview-section"
+    },
+    {
+      "name": "Dedicated Invisalign Offer Section",
+      "description": "Eyebrow 'STRAIGHTEN YOUR SMILE', Heading 'Discover Invisalign at GM Dental Rochester'. 3 confirmed pricing cards: Express (£2,400), Lite (£3,000), Comprehensive (£3,990). Highlights free initial assessment, 3D smile simulation, and finance options from £50.40/month.",
+      "data_testid": "invisalign-offer-section"
+    },
+    {
+      "name": "Interactive Before & After Slider",
+      "description": "Draggable side-by-side smile comparison tool allowing prospective patients to slide between pre-treatment and post-treatment results.",
+      "data_testid": "before-after-slider"
+    },
+    {
+      "name": "Patient Journey 5-Step Process",
+      "description": "Step 1: Free Consultation & 3D Scan -> Step 2: Digital Smile Design -> Step 3: Customized Treatment Plan -> Step 4: Comfortable Application -> Step 5: Lifetime Retention & Aftercare.",
+      "data_testid": "patient-journey-section"
+    },
+    {
+      "name": "Patient Video & Review Testimonials",
+      "description": "Video player modal cards featuring real patient stories (Elizabeth & Ella) alongside verified Google/Trustpilot star rating reviews.",
+      "data_testid": "patient-testimonials-section"
+    },
+    {
+      "name": "Clinic Trust & Facilities Gallery",
+      "description": "High-res photography showcase of GM Dental Rochester clinic interior, state-of-the-art iTero 3D scanner, comfortable treatment suites, and specialist team.",
+      "data_testid": "clinic-trust-section"
+    },
+    {
+      "name": "Comprehensive FAQ Accordion",
+      "description": "10 medically responsible, clear collapsible questions regarding Invisalign cost, treatment duration, pain level, finance options, and consultation procedure.",
+      "data_testid": "faq-section"
+    },
+    {
+      "name": "Discreet Mobile Sticky Action Bar",
+      "description": "Bottom fixed navigation bar visible on mobile devices with quick tap options for Call, WhatsApp, and Book Form modal trigger.",
+      "data_testid": "mobile-sticky-cta-bar"
+    },
+    {
+      "name": "Footer",
+      "description": "Luxury dark section with clinic address (Rochester, Kent), opening hours, GDC regulation notes, contact phone/email, map link, and copyright.",
+      "data_testid": "page-footer"
+    }
+  ],
+  "image_urls": {
+    "smile_transformation_hero": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "smile_closeup_result": "https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "smile_portrait_2": "https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "clinic_interior_main": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "clinic_treatment_room": "https://images.unsplash.com/photo-1616391182219-e080b4d1043a?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "clinic_lounge": "https://images.unsplash.com/photo-1629195069923-93c513442701?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "invisalign_aligner_hand": "https://images.unsplash.com/photo-1695275857301-19e5a9995108?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "invisalign_case": "https://images.unsplash.com/photo-1694675236489-d73651370688?crop=entropy&cs=srgb&fm=jpg&q=85"
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the brand palette: Gold (#D19A15) for CTAs, pricing badges & highlights; Dark Grey (#4C4C4C) for body text; White and warm subtle tones for container backgrounds.",
+    "Ensure every interactive element has explicit data-testid attributes formatted in kebab-case.",
+    "Do NOT use raw Inter font for headings. Use Playfair Display or Cormorant Garamond for elegant serif headlines.",
+    "Make sure forms use proper input controls with clear focus states and submit feedback using sonner toasts.",
+    "Implement the interactive Before/After drag slider with high precision.",
+    "Include the 3 confirmed Invisalign packages: Express (£2,400), Lite (£3,000), Comprehensive (£3,990) with finance calculation breakdown (£50.40/mo).",
+    "Ensure the mobile sticky CTA bar is responsive and hidden on desktop screens (md:hidden)."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": {
+    "data_testid_rule": "MUST include data-testid attribute on all interactive/key elements (buttons, inputs, links, tabs, pricing cards).",
+    "contrast_rule": "Ensure readable contrast for all text. Hover states MUST set explicit text color alongside background changes.",
+    "no_universal_transition": "Do not apply transition: all globally. Transition specific properties like opacity, color, background-color, border-color.",
+    "mobile_padding": "Maintain generous internal padding (p-6 or p-8) inside containers with borders to avoid edge collisions."
+  }
+}

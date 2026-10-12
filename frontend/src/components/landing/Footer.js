@@ -1,0 +1,72 @@
+import { Phone, MessageCircle } from "lucide-react";
+import { CLINIC_NAME, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL, scrollToSection } from "@/constants/clinic";
+
+const LINKS = [
+  { label: "Treatments", id: "cosmetic" },
+  { label: "Invisalign Offer", id: "invisalign" },
+  { label: "Results", id: "results" },
+  { label: "Our Clinic", id: "clinic" },
+  { label: "Patient Stories", id: "reviews" },
+  { label: "FAQ", id: "faq" },
+];
+
+export default function Footer() {
+  return (
+    <footer data-testid="page-footer" className="bg-ink-950 border-t border-gold/20 px-4 sm:px-8 lg:px-16 pt-16 pb-28 md:pb-10">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
+        <div>
+          <div className="flex items-center gap-4">
+            <img src="/img/apple-touch-icon.png" alt="GM Dental & Implant Centre gold flower logo" className="h-16 w-16 rounded-xl" />
+            <div className="leading-none">
+              <p className="block font-display text-cream text-2xl tracking-[0.08em]">GM DENTAL</p>
+              <p className="block text-[0.6rem] tracking-[0.34em] text-gold mt-1.5">&amp; IMPLANT CENTRE</p>
+            </div>
+          </div>
+          <p className="mt-5 text-sm text-cream/60 leading-relaxed max-w-xs">
+            {CLINIC_NAME} — private cosmetic dentistry and Invisalign in Rochester, Kent.
+          </p>
+        </div>
+        <div>
+          <p className="eyebrow mb-5">Explore</p>
+          <ul className="space-y-3">
+            {LINKS.map((l) => (
+              <li key={l.id}>
+                <a
+                  href={`#${l.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(l.id);
+                  }}
+                  className="text-sm text-cream/70 hover:text-gold transition-colors"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="eyebrow mb-5">Book Your Free Consultation</p>
+          <div className="space-y-3">
+            <a href={PHONE_TEL} data-testid="footer-call-link" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors text-sm">
+              <Phone size={16} strokeWidth={1.8} className="text-gold" />
+              {PHONE_DISPLAY}
+            </a>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" data-testid="footer-whatsapp-link" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors text-sm">
+              <MessageCircle size={16} strokeWidth={1.8} className="text-gold" />
+              Message us on WhatsApp
+            </a>
+          </div>
+          <p className="mt-6 text-xs text-cream/45 leading-relaxed">
+            This page is for information only. Treatment suitability, costs and outcomes depend on a clinical
+            assessment and vary between patients.
+          </p>
+        </div>
+      </div>
+      <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-xs text-cream/45">
+        <p>© 2026 {CLINIC_NAME}. All rights reserved.</p>
+        <p>Cosmetic Dentistry · Invisalign Rochester</p>
+      </div>
+    </footer>
+  );
+}

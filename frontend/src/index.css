@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Jost', ui-sans-serif, system-ui, sans-serif;
+  background-color: #141311;
+  color: #F3EFE6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* subtle film grain over the whole experience */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: #D19A15;
+  color: #141311;
+}
+
+:focus-visible {
+  outline: 2px solid #D19A15;
+  outline-offset: 2px;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #D19A15;
+  font-weight: 600;
+}
+
+/* editorial marquee */
+.marquee {
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* gold glow used behind dark sections */
+.gold-halo {
+  background: radial-gradient(closest-side, rgba(209, 154, 21, 0.16), transparent 70%);
+}
+
+/* input base on light cards */
+.field-input {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid rgba(76, 76, 76, 0.25);
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  color: #1A1A1A;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.field-input::placeholder {
+  color: rgba(76, 76, 76, 0.45);
+}
+.field-input:focus {
+  outline: none;
+  border-color: #D19A15;
+  box-shadow: 0 0 0 3px rgba(209, 154, 21, 0.22);
+}
+.field-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4C4C4C;
+  margin-bottom: 0.4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
