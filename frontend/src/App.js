@@ -51,7 +51,7 @@ function App() {
 
   return (
     <Boundary>
-      <div className="bg-ink-900 text-cream min-h-screen pb-16 md:pb-0">
+      <div className="bg-white text-ink-900 min-h-screen pb-16 md:pb-0">
         <main>
           <Hero />
           <Marquee />

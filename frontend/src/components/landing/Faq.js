@@ -42,7 +42,7 @@ export default function Faq() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="faq" data-testid="faq-section" className="bg-cream text-ink-900 py-20 lg:py-28 px-4 sm:px-8 lg:px-16">
+    <section id="faq" data-testid="faq-section" className="bg-white text-ink-900 py-20 lg:py-28 px-4 sm:px-8 lg:px-16">
       <div className="max-w-4xl mx-auto">
         <Reveal className="text-center">
           <Eyebrow>Good to Know</Eyebrow>

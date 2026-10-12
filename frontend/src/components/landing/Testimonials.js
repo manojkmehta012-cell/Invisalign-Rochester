@@ -20,7 +20,7 @@ function VideoCard({ src, poster, quote, name, context, testid }) {
 
   return (
     <div data-testid={testid} className="max-w-sm mx-auto w-full">
-      <div className="relative rounded-3xl overflow-hidden border border-gold/25 bg-ink-800 cursor-pointer" onClick={start}>
+      <div className="relative rounded-3xl overflow-hidden border border-gold/30 bg-cream cursor-pointer" onClick={start}>
         <video
           ref={videoRef}
           src={src}
@@ -39,19 +39,19 @@ function VideoCard({ src, poster, quote, name, context, testid }) {
           </span>
         )}
       </div>
-      <p className="mt-5 font-display italic text-lg text-cream leading-relaxed">“{quote}”</p>
-      <p className="mt-3 text-xs tracking-[0.18em] uppercase text-gold">{name} · {context}</p>
+      <p className="mt-5 font-display italic text-lg text-ink-900 leading-relaxed">“{quote}”</p>
+      <p className="mt-3 text-xs tracking-[0.18em] uppercase text-gold-hover">{name} · {context}</p>
     </div>
   );
 }
 
 export default function Testimonials() {
   return (
-    <section id="reviews" data-testid="patient-testimonials-section" className="bg-ink-900 py-20 lg:py-28 px-4 sm:px-8 lg:px-16">
+    <section id="reviews" data-testid="patient-testimonials-section" className="bg-white text-ink-900 py-20 lg:py-28 px-4 sm:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto">
         <Reveal>
           <Eyebrow>Patient Stories</Eyebrow>
-          <h2 className="font-display font-medium text-3xl sm:text-4xl lg:text-5xl tracking-tight max-w-2xl text-cream">
+          <h2 className="font-display font-medium text-3xl sm:text-4xl lg:text-5xl tracking-tight max-w-2xl text-ink-900">
             Hear It From Our Patients
           </h2>
         </Reveal>
@@ -80,7 +80,7 @@ export default function Testimonials() {
         </div>
 
         <Reveal>
-          <p className="mt-12 text-xs text-cream/50 max-w-2xl leading-relaxed">
+          <p className="mt-12 text-xs text-smoke/70 max-w-2xl leading-relaxed">
             Genuine, unscripted patient videos. Individual experiences and results vary; treatment is always subject
             to a clinical assessment.
           </p>

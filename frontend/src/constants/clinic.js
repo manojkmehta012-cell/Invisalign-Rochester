@@ -1,12 +1,11 @@
 export const CLINIC_NAME = "GM Dental & Implant Centre";
 
-// TODO: owner will supply the real clinic phone number and WhatsApp number.
-// Placeholders use the Rochester area code and the UK fictional mobile range.
+// TODO: clinic phone number still pending from owner; WhatsApp confirmed.
 export const PHONE_DISPLAY = "01634 000 000";
 export const PHONE_TEL = "tel:+441634000000";
 export const WHATSAPP_URL =
-  "https://wa.me/447700900000?text=" +
-  encodeURIComponent("Hello GM Dental, I would like to book a free cosmetic dentistry consultation in Rochester.");
+  "https://wa.me/447769076413?text=" +
+  encodeURIComponent("Hello GM Dental, I would like to book a free Invisalign consultation in Rochester.");
 
 export const TREATMENTS = [
   "Cosmetic Dentistry",

@@ -23,7 +23,7 @@ export default function Results() {
   };
 
   return (
-    <section id="results" data-testid="results-section" className="bg-cream text-ink-900 py-20 lg:py-28 overflow-hidden">
+    <section id="results" data-testid="results-section" className="bg-white text-ink-900 py-20 lg:py-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
         <Reveal className="flex flex-wrap items-end justify-between gap-6">
           <div>
