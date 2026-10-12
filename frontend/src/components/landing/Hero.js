@@ -63,9 +63,12 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.55 }}
             >
-              Explore cosmetic dentistry at GM Dental Rochester, from Invisalign clear aligners to teeth
-              whitening, composite bonding and veneers. Discover the options that suit your smile goals and take
-              the first step towards a more confident you.
+              Concerned about <span className="text-gold-hover font-medium">crooked teeth</span>,{" "}
+              <span className="text-gold-hover font-medium">crowded teeth</span> or{" "}
+              <span className="text-gold-hover font-medium">gaps between your teeth</span>? Explore cosmetic
+              dentistry options at GM Dental Rochester, including Invisalign clear aligners, composite bonding,
+              veneers and teeth whitening. Discover the treatments that may suit your smile goals with guidance
+              from our dental team.
             </motion.p>
 
             <motion.div
