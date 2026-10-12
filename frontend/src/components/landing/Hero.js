@@ -45,9 +45,14 @@ export default function Hero() {
                   Your <span className="italic text-gold">Dream Smile</span>.
                 </motion.span>
               </span>
-              <span className="block overflow-hidden pb-2">
+              <span className="block overflow-hidden pb-1">
                 <motion.span className="block" {...lineAnim(1)}>
-                  A Plan Made for You.
+                  A Plan Made
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden pb-2">
+                <motion.span className="block" {...lineAnim(2)}>
+                  for You.
                 </motion.span>
               </span>
             </h1>
