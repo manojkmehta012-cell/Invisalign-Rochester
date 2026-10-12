@@ -58,8 +58,9 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.55 }}
             >
-              Straighten your smile discreetly with Invisalign clear aligners. Book your free consultation this
-              month — including a smile simulation, so you can see your new smile before you even begin.
+              Explore cosmetic dentistry at GM Dental Rochester, from Invisalign clear aligners to teeth
+              whitening, composite bonding and veneers. Discover the options that suit your smile goals and take
+              the first step towards a more confident you.
             </motion.p>
 
             <motion.div
@@ -97,8 +98,7 @@ export default function Hero() {
             transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="bg-white/95 text-ink-900 rounded-[2rem] border border-gold/50 shadow-[0_30px_90px_rgba(20,19,17,0.25)] backdrop-blur-sm p-6 md:p-9"
           >
-            <p className="eyebrow">This Month's Offer</p>
-            <h2 className="font-display text-2xl md:text-3xl mt-2 leading-snug">
+            <h2 className="font-display text-2xl md:text-3xl leading-snug">
               Book your <span className="italic text-gold-hover">FREE</span> Invisalign consultation
             </h2>
             <div className="mt-6">
