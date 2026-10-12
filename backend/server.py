@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException, UploadFile, File, Response
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field, ConfigDict, BeforeValidator, field_valida
 from typing import Annotated, List, Optional
 import os
 import re
+import requests
 import logging
 import uuid
 from datetime import datetime, timezone
@@ -156,6 +157,70 @@ async def get_leads():
     return [Lead.from_mongo(d) for d in docs]
 
 
+@api_router.post("/upload")
+async def upload(file: UploadFile = File(...)):
+    content_type = file.content_type or "application/octet-stream"
+    if content_type not in ALLOWED_UPLOAD_TYPES:
+        raise HTTPException(status_code=415, detail="File type not allowed. Upload images (JPEG, PNG, GIF, WebP) or videos (MP4, MOV).")
+    data = await file.read()
+    if len(data) > MAX_UPLOAD_BYTES:
+        raise HTTPException(status_code=413, detail="File too large. Maximum size is 60MB.")
+    ext = file.filename.rsplit(".", 1)[-1].lower() if file.filename and "." in file.filename else "bin"
+    ext = ext if ext in MIME_TYPES else "bin"
+    path = f"{APP_NAME}/uploads/{uuid.uuid4()}.{ext}"
+    try:
+        result = put_object(path, data, content_type)
+    except requests.exceptions.HTTPError as e:
+        logger.error(f"Storage upload failed: {e}")
+        raise HTTPException(status_code=502, detail="Media storage upload failed. Please try again.")
+    record = {
+        "id": str(uuid.uuid4()),
+        "storage_path": result["path"],
+        "original_filename": file.filename,
+        "content_type": content_type,
+        "size": result.get("size", len(data)),
+        "is_deleted": False,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    }
+    await db.files.insert_one(record)
+    return {
+        "ok": True,
+        "path": result["path"],
+        "size": record["size"],
+        "url": f"/api/files/{result['path']}",
+    }
+
+
+@api_router.get("/files")
+async def list_files():
+    docs = await db.files.find({"is_deleted": False}).sort("created_at", -1).to_list(1000)
+    return [
+        {
+            "id": d.get("id"),
+            "path": d.get("storage_path"),
+            "original_filename": d.get("original_filename"),
+            "content_type": d.get("content_type"),
+            "size": d.get("size"),
+            "created_at": d.get("created_at"),
+            "url": f"/api/files/{d.get('storage_path')}",
+        }
+        for d in docs
+    ]
+
+
+@api_router.get("/files/{path:path}")
+async def download(path: str):
+    record = await db.files.find_one({"storage_path": path, "is_deleted": False})
+    if not record:
+        raise HTTPException(status_code=404, detail="File not found")
+    try:
+        data, content_type = get_object(path)
+    except requests.exceptions.HTTPError as e:
+        logger.error(f"Storage download failed: {e}")
+        raise HTTPException(status_code=502, detail="Media storage download failed.")
+    return Response(content=data, media_type=record.get("content_type") or content_type)
+
+
 app.include_router(api_router)
 
 app.add_middleware(
@@ -171,6 +236,75 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# Object storage (Emergent integrations)
+STORAGE_BASE = (os.environ.get("INTEGRATION_PROXY_URL") or "").strip() or "https://integrations.emergentagent.com"
+STORAGE_URL = STORAGE_BASE.rstrip("/") + "/objstore/api/v1/storage"
+EMERGENT_KEY = os.environ.get("EMERGENT_LLM_KEY")
+APP_NAME = "gm-dental"
+storage_key = None
+
+MIME_TYPES = {
+    "jpg": "image/jpeg", "jpeg": "image/jpeg", "png": "image/png",
+    "gif": "image/gif", "webp": "image/webp", "pdf": "application/pdf",
+    "mp4": "video/mp4", "mov": "video/quicktime", "m4v": "video/mp4",
+}
+ALLOWED_UPLOAD_TYPES = {
+    "image/jpeg", "image/png", "image/gif", "image/webp",
+    "video/mp4", "video/quicktime",
+}
+MAX_UPLOAD_BYTES = 60 * 1024 * 1024
+
+
+def init_storage(force: bool = False):
+    global storage_key
+    if storage_key and not force:
+        return storage_key
+    if not EMERGENT_KEY:
+        raise RuntimeError("EMERGENT_LLM_KEY not configured")
+    resp = requests.post(f"{STORAGE_URL}/init", json={"emergent_key": EMERGENT_KEY}, timeout=30)
+    resp.raise_for_status()
+    storage_key = resp.json()["storage_key"]
+    logger.info("Object storage initialized")
+    return storage_key
+
+
+def put_object(path: str, data: bytes, content_type: str) -> dict:
+    key = init_storage()
+    resp = requests.put(
+        f"{STORAGE_URL}/objects/{path}",
+        headers={"X-Storage-Key": key, "Content-Type": content_type},
+        data=data,
+        timeout=120,
+    )
+    if resp.status_code == 404:
+        key = init_storage(force=True)
+        resp = requests.put(
+            f"{STORAGE_URL}/objects/{path}",
+            headers={"X-Storage-Key": key, "Content-Type": content_type},
+            data=data,
+            timeout=120,
+        )
+    resp.raise_for_status()
+    return resp.json()
+
+
+def get_object(path: str):
+    key = init_storage()
+    resp = requests.get(f"{STORAGE_URL}/objects/{path}", headers={"X-Storage-Key": key}, timeout=60)
+    if resp.status_code == 404:
+        key = init_storage(force=True)
+        resp = requests.get(f"{STORAGE_URL}/objects/{path}", headers={"X-Storage-Key": key}, timeout=60)
+    resp.raise_for_status()
+    return resp.content, resp.headers.get("Content-Type", "application/octet-stream")
+
+
+@app.on_event("startup")
+async def startup():
+    try:
+        init_storage()
+    except Exception as e:
+        logger.error(f"Storage init failed: {e}")
 
 
 @app.on_event("shutdown")
