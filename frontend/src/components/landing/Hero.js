@@ -16,17 +16,17 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   return (
-    <section id="top" data-testid="hero-section" ref={ref} className="relative overflow-hidden bg-ink-900">
+    <section id="top" data-testid="hero-section" ref={ref} className="relative overflow-hidden bg-white text-ink-900">
       <motion.img
         src="/img/reveal.jpg"
         alt=""
         aria-hidden="true"
         style={{ y }}
-        className="absolute inset-0 w-full h-[112%] object-cover object-top opacity-40"
+        className="absolute inset-0 w-full h-[112%] object-cover object-top"
         data-testid="hero-background"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink-900 via-ink-900/85 to-ink-900/45" />
-      <div className="gold-halo absolute -top-40 -left-40 w-[40rem] h-[40rem] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/40" />
+      <div className="absolute inset-0 bg-white/35" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 pt-8 md:pt-10 pb-20 md:pb-28">
         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
@@ -36,10 +36,10 @@ export default function Hero() {
         <div className="grid lg:grid-cols-[1.02fr_0.98fr] gap-12 lg:gap-14 items-center mt-8 md:mt-12">
           <div>
             <motion.p className="eyebrow" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
-              Invisalign at GM Dental Rochester
+              Cosmetic Dentistry at GM Dental Rochester
             </motion.p>
 
-            <h1 data-testid="hero-headline" className="font-display font-medium text-[2.5rem] leading-[1.08] sm:text-6xl lg:text-[4rem] tracking-tight mt-5">
+            <h1 data-testid="hero-headline" className="font-display font-medium text-[2.5rem] leading-[1.08] sm:text-6xl lg:text-[4rem] tracking-tight mt-5 text-ink-900">
               <span className="block overflow-hidden pb-1">
                 <motion.span className="block" {...lineAnim(0)}>
                   Your <span className="italic text-gold">Dream Smile</span>.
@@ -53,7 +53,7 @@ export default function Hero() {
             </h1>
 
             <motion.p
-              className="mt-6 max-w-xl text-base md:text-lg text-cream/80 leading-relaxed"
+              className="mt-6 max-w-xl text-base md:text-lg text-smoke leading-relaxed"
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.55 }}
@@ -73,7 +73,7 @@ export default function Hero() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-gold/40 hover:border-gold text-cream hover:text-gold text-xs font-semibold tracking-[0.12em] uppercase px-6 py-4 transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-gold/60 hover:border-gold bg-white/70 text-ink-900 hover:text-gold-hover text-xs font-semibold tracking-[0.12em] uppercase px-6 py-4 transition-colors"
               >
                 <MessageCircle size={16} strokeWidth={1.8} />
                 Book on WhatsApp
@@ -81,7 +81,7 @@ export default function Hero() {
               <a
                 data-testid="hero-cta-call"
                 href={PHONE_TEL}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 hover:border-gold/60 text-cream/85 hover:text-gold text-xs font-semibold tracking-[0.12em] uppercase px-6 py-4 transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-smoke/30 hover:border-gold bg-white/70 text-ink-900 hover:text-gold-hover text-xs font-semibold tracking-[0.12em] uppercase px-6 py-4 transition-colors"
               >
                 <Phone size={15} strokeWidth={1.8} />
                 Call the Clinic
@@ -95,7 +95,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-cream text-ink-900 rounded-[2rem] border border-gold/50 shadow-[0_30px_90px_rgba(0,0,0,0.5)] p-6 md:p-9"
+            className="bg-white/95 text-ink-900 rounded-[2rem] border border-gold/50 shadow-[0_30px_90px_rgba(20,19,17,0.25)] backdrop-blur-sm p-6 md:p-9"
           >
             <p className="eyebrow">This Month's Offer</p>
             <h2 className="font-display text-2xl md:text-3xl mt-2 leading-snug">
