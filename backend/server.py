@@ -76,9 +76,10 @@ class LeadCreate(BaseModel):
     name: str = Field(min_length=2, max_length=120)
     mobile: str = Field(min_length=7, max_length=25)
     email: str = Field(min_length=5, max_length=160)
-    treatment: str = Field(max_length=60)
+    message: str = Field(default="", max_length=2000)
+    treatment: str = Field(default="Invisalign", max_length=60)
     location: str = Field(default="Rochester", max_length=60)
-    source: str = Field(default="cosmetic-landing", max_length=60)
+    source: str = Field(default="invisalign-landing", max_length=60)
 
     @field_validator("mobile")
     @classmethod
@@ -107,9 +108,10 @@ class Lead(BaseDocument):
     name: str
     mobile: str
     email: str
-    treatment: str
+    message: str = ""
+    treatment: str = "Invisalign"
     location: str = "Rochester"
-    source: str = "cosmetic-landing"
+    source: str = "invisalign-landing"
     status: str = "new"
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 

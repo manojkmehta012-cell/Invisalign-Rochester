@@ -1,26 +1,23 @@
-# PRD — GM Dental & Implant Centre: Cosmetic Dentistry + Invisalign Landing Page
+# PRD — GM Dental & Implant Centre: Invisalign Landing Page
 
 ## Original Problem Statement
-Build a premium, human-centred, conversion-focused landing page for GM Dental & Implant Centre (Rochester, Kent, UK) covering Cosmetic Dentistry with a dedicated, approved Invisalign offer section. Strict staged workflow: asset analysis → placement report → approval ("GO" given when the user sent the logo with "place it properly make it visible") → build. Brand colours only: gold #D19A15, dark grey #4C4C4C, white. No stock imagery, no AI-generated imagery, no fabricated reviews, prices or credentials. CTAs: Book Your Free Consultation (confirmed free), Book on WhatsApp, Call the Clinic. Lead form: Full Name, Mobile, Email, Preferred Treatment, Location (Rochester only). User later requested award-level art direction: kinetic hero with masked line-by-line reveal, deliberate real photography, aligned bento, slow editorial marquee, framer-motion reveals, lenis smooth scroll, subtle parallax.
+Premium, conversion-focused Invisalign landing page for GM Dental & Implant Centre, Rochester Kent. Stage 1-2 (asset analysis + placement report) were delivered first; approval given with the logo upload. First build: full cosmetic + Invisalign page. Revision request (latest, authoritative): shift the lead form INTO the hero over a background image, remove all menu items, use the uploaded proper logo, focus the page ONLY on Invisalign, add a before/after image grid slider, highlight the offer, form fields = Full Name, Mobile Number, Email, Message. Brand-guide PDF was referenced by the user but never arrived in uploads — colours remain the confirmed gold #D19A15 / dark grey #4C4C4C / white.
 
 ## Architecture
-- Frontend: React (CRA) single-page landing at /app/frontend — components under src/components/landing/ (Nav, Hero, LeadForm, Marquee, SmilePlan, InvisalignOffer, Results+BeforeAfter slider, Treatments, Journey, Trust, Testimonials, Faq, FinalCta, Footer, StickyCta, Reveal). Lenis momentum scrolling + framer-motion masked hero reveal & scroll reveals. Fonts: Fraunces (display serif) + Jost (sans). Dark charcoal (#141311) / cream (#F5F1E7) alternating sections with gold accents; grain overlay.
-- Backend: FastAPI (/app/backend/server.py) — POST /api/leads (validated: name, UK-format mobile, email, treatment whitelist, location fixed Rochester, source), GET /api/leads (most recent 200), plus template status routes. Leads stored in MongoDB (`leads` collection) via BaseDocument/PyObjectId pattern.
-- Media pipeline: 4 uploaded videos transcoded with ffmpeg to 720px-wide H.264 web MP4s (2.4–5MB) + posters in /app/frontend/public/media/; 7 uploaded images + logo in /app/frontend/public/img/; before/after composites split into slider halves; favicon.svg + apple-touch-icon derived from the GM Dental logo.
+- Frontend: React CRA single page. Sections: Hero (bg image reveal.jpg + dark overlay, transparent GM Dental logo, masked line-reveal headline, lead form card), Invisalign marquee, Before & After embla slider (6 cases cropped from uploaded grid image), gold highlighted offer panel (exact campaign offer + packages £2,400/£3,000/£3,990 + promo video + handover photo), 5-step patient journey, Elizabeth & Ella video testimonials, 8-question Invisalign FAQ, final CTA + form, footer, mobile sticky Call/WhatsApp/Book bar. Lenis + framer-motion. Fonts: Fraunces + Jost.
+- Backend: FastAPI POST /api/leads (name, mobile, email, message; treatment defaults "Invisalign", location "Rochester", source "invisalign-landing"), GET /api/leads. MongoDB `leads` collection.
+- SEO: Invisalign-focused title/description, OG/Twitter, MedicalBusiness (Invisalign service) + FAQPage JSON-LD matching on-page text, robots.txt, llms.txt, noscript fallback, favicon.svg + dark apple-touch-icon.
 
-## Assets (all uploaded, verified)
-- IMG_7401.jpg — smile-reveal photo (hero) · handover.jpg — Invisalign aligner collection (Invisalign section) · zone.jpg — Invisalign Zone clinic photo (Trust) · smile.jpg — intraoral healthy smile (Smile Plan bento) · 3./9. INVISALIGN.png — two before/after cases (Results sliders) · GM DENTAL LOGO.webp — nav/footer/favicon · 4 videos: invisalign promo (Invisalign section), clinic film (Trust), Elizabeth & Ella testimonials (Testimonials).
-
-## Offer details (user-confirmed, published)
-Packages £2,400 / £3,000 / £3,990; free initial assessment incl. smile simulation; finance from £50.40/month (representative example, subject to status); iTero scan £65; whitening £348. NOT published: "additional costs £713" (meaning unexplained) and package inclusions (confirmed at assessment).
+## Confirmed offer (user-supplied, published verbatim)
+Book your FREE Invisalign® consultation this month. Assessment worth £85 FREE. iTero Scan Smile Simulation worth £65 FREE*. Teeth Whitening worth £348 FREE*. Consultation completely free and no-obligation. See before-and-after versions of your teeth before accepting treatment. 0% finance available — starts at just £50.40 per month. (*Terms line added: "Terms apply — confirm current offer details at your free consultation.")
 
 ## Implemented (2026-10-12)
-Stages 1–2 asset analysis + placement report; full landing page (hero with masked reveal + parallax photo, overlapping lead form, marquee, smile-plan bento, Invisalign offer with pricing + promo video, draggable before/after results, treatment cards, 5-step journey, clinic trust with film + clinician placeholder, genuine video testimonials, 10-question FAQ, repeated final CTA + form, footer, mobile sticky Call/WhatsApp/Book bar); lead API with validation + persistence; SEO: unique title/description, OG/Twitter, MedicalBusiness + FAQPage JSON-LD (no fabricated ratings; no canonical/sitemap until production domain), robots.txt, llms.txt, noscript fallback, favicon.
+Asset analysis + placement report; first full build; revision: menu removed, hero redesigned with bg image + embedded 4-field form, Invisalign-only focus (treatments/bento/trust sections removed), case slider from uploaded grid, gold highlighted offer, form field change (message replaces treatment/location selects), FAQ trimmed to 8 Invisalign questions, SEO head updated to match.
 
 ## Pending / Backlog
-- P0: Real clinic phone + WhatsApp numbers (placeholders 01634 000 000 / wa.me 447700900000 in src/constants/clinic.js — replace before launch).
-- P0: Production domain → add canonical, og:url, og:image, sitemap.xml.
-- P1: Clinician name/photo/credentials for Trust section (placeholder card in place).
-- P1: Invisalign package names/inclusions and meaning of "additional costs £713".
-- P1: Patient consent confirmations for all photos/videos (uploaded by owner, assumed authorised).
-- P2: GTM/GA4/Meta Pixel wiring when measurement IDs are provided; CRM/webhook lead routing when supplied.
+- P0: Real clinic phone + WhatsApp numbers (placeholders 01634 000 000 / wa.me 447700900000 in src/constants/clinic.js).
+- P0: Brand guide PDF (user said it defines text/colour codes) — not received; re-upload and I will align fonts/colours to it.
+- P0: Production domain → canonical, og:url, og:image, sitemap.xml.
+- P1: Patient consent confirmation for before/after photos and testimonial videos.
+- P1: Invisalign package inclusions/names.
+- P2: GTM/GA4/Meta Pixel + CRM lead routing when IDs/webhook supplied.

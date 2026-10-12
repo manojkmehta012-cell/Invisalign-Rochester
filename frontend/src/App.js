@@ -1,15 +1,11 @@
 import React, { useEffect } from "react";
 import Lenis from "lenis";
 import "@/App.css";
-import Nav from "@/components/landing/Nav";
 import Hero from "@/components/landing/Hero";
 import Marquee from "@/components/landing/Marquee";
-import SmilePlan from "@/components/landing/SmilePlan";
-import InvisalignOffer from "@/components/landing/InvisalignOffer";
 import Results from "@/components/landing/Results";
-import Treatments from "@/components/landing/Treatments";
+import InvisalignOffer from "@/components/landing/InvisalignOffer";
 import Journey from "@/components/landing/Journey";
-import Trust from "@/components/landing/Trust";
 import Testimonials from "@/components/landing/Testimonials";
 import Faq from "@/components/landing/Faq";
 import FinalCta from "@/components/landing/FinalCta";
@@ -56,21 +52,12 @@ function App() {
   return (
     <Boundary>
       <div className="bg-ink-900 text-cream min-h-screen pb-16 md:pb-0">
-        <Nav />
         <main>
           <Hero />
-          <section id="book" className="relative z-10 -mt-12 md:-mt-20 px-4 sm:px-8 lg:px-16">
-            <div data-testid="hero-form-panel" className="max-w-7xl mx-auto">
-              <FinalCta embed />
-            </div>
-          </section>
           <Marquee />
-          <SmilePlan />
-          <InvisalignOffer />
           <Results />
-          <Treatments />
+          <InvisalignOffer />
           <Journey />
-          <Trust />
           <Testimonials />
           <Faq />
           <FinalCta />

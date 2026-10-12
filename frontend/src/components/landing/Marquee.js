@@ -1,10 +1,9 @@
 const ITEMS = [
   "Invisalign Clear Aligners",
-  "Teeth Whitening",
-  "Composite Bonding",
-  "Porcelain Veneers",
-  "Smile Makeovers",
-  "Cosmetic Crowns",
+  "Free Consultation",
+  "0% Finance Available",
+  "Smile Simulation",
+  "See Your New Smile First",
 ];
 
 const Row = ({ hidden }) => (

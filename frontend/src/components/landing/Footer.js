@@ -2,10 +2,9 @@ import { Phone, MessageCircle } from "lucide-react";
 import { CLINIC_NAME, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL, scrollToSection } from "@/constants/clinic";
 
 const LINKS = [
-  { label: "Treatments", id: "cosmetic" },
-  { label: "Invisalign Offer", id: "invisalign" },
-  { label: "Results", id: "results" },
-  { label: "Our Clinic", id: "clinic" },
+  { label: "Before & After", id: "results" },
+  { label: "Invisalign Offer", id: "offer" },
+  { label: "Patient Journey", id: "journey" },
   { label: "Patient Stories", id: "reviews" },
   { label: "FAQ", id: "faq" },
 ];
@@ -16,7 +15,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
         <div>
           <div className="flex items-center gap-4">
-            <img src="/img/apple-touch-icon.png" alt="GM Dental & Implant Centre gold flower logo" className="h-16 w-16 rounded-xl" />
+            <img src="/img/logo.webp" alt="GM Dental & Implant Centre gold flower logo" className="h-20 w-20" />
             <div className="leading-none">
               <p className="block font-display text-cream text-2xl tracking-[0.08em]">GM DENTAL</p>
               <p className="block text-[0.6rem] tracking-[0.34em] text-gold mt-1.5">&amp; IMPLANT CENTRE</p>

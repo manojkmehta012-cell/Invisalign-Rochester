@@ -5,14 +5,6 @@ import { Reveal, Eyebrow } from "./Reveal";
 
 export const FAQS = [
   {
-    q: "What is cosmetic dentistry?",
-    a: "Cosmetic dentistry focuses on the appearance of your smile — straighter, whiter and well-shaped teeth — while protecting your oral health. At GM Dental Rochester it can include Invisalign clear aligners, teeth whitening, composite bonding, veneers, cosmetic crowns and smile makeovers.",
-  },
-  {
-    q: "Which cosmetic treatments may be suitable for me?",
-    a: "That depends on your teeth, your goals and your oral health. The best first step is a free initial assessment, where a dentist examines your smile, listens to what you want and explains which options may suit you.",
-  },
-  {
     q: "What is Invisalign?",
     a: "Invisalign is a series of custom-made, nearly invisible clear aligners that fit over your teeth and gently move them into a planned position. They are removable for eating and cleaning.",
   },
@@ -22,15 +14,15 @@ export const FAQS = [
   },
   {
     q: "How much does Invisalign cost?",
-    a: "Current Invisalign packages at our Rochester clinic are £2,400, £3,000 and £3,990. The exact cost depends on your clinical assessment and the treatment plan you agree.",
+    a: "Current Invisalign packages at our Rochester clinic are £2,400, £3,000 and £3,990, with 0% finance starting at just £50.40 per month. The exact cost depends on your clinical assessment and the treatment plan you agree.",
   },
   {
     q: "What is included in the current Invisalign offer?",
-    a: "The initial assessment is free and includes a smile simulation. The three package prices are £2,400, £3,000 and £3,990; supporting options include an iTero digital scan (£65) and professional teeth whitening (£348). Package inclusions and any additional costs are confirmed at your assessment.",
+    a: "This month, your Invisalign consultation is completely free and no-obligation: an assessment worth £85 free, an iTero Scan Smile Simulation worth £65 free*, and Teeth Whitening worth £348 free*. You will also see before-and-after versions of your teeth before accepting treatment. *Terms apply — details are confirmed at your consultation.",
   },
   {
     q: "Is finance available?",
-    a: "Finance is available from £50.40 per month (representative example). Eligibility, deposit and terms are subject to status and confirmed in writing before you commit to anything.",
+    a: "Yes — 0% finance is available, with plans starting at just £50.40 per month. Eligibility and terms are subject to status and confirmed in writing before you commit to anything.",
   },
   {
     q: "Can I combine Invisalign with other cosmetic treatments?",
@@ -38,11 +30,11 @@ export const FAQS = [
   },
   {
     q: "How do I arrange a consultation in Rochester?",
-    a: "Complete the form on this page, send us a WhatsApp message, or call the clinic. Our team will arrange your free initial assessment at GM Dental Rochester.",
+    a: "Complete the form on this page, send us a WhatsApp message, or call the clinic. Our team will arrange your free Invisalign consultation at GM Dental Rochester.",
   },
   {
     q: "What happens at my first appointment?",
-    a: "You will discuss your smile goals, have your teeth examined and, where appropriate, receive an iTero scan with a smile simulation. Your dentist explains suitable options and costs, and there is never any pressure to proceed.",
+    a: "You will discuss your smile goals, have your teeth examined and receive an iTero scan with a smile simulation, so you can see before-and-after versions of your teeth. Your dentist explains suitable options, the 0% finance plans and costs — and there is never any pressure to proceed.",
   },
 ];
 
